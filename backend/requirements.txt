@@ -1,0 +1,7 @@
+Flask
+torch
+torchvision
+timm
+Pillow
+numpy
+flask-cors
