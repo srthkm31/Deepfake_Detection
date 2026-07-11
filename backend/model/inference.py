@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import os
 import torchvision
 import timm
 from PIL import Image
@@ -26,7 +27,9 @@ model.fc=nn.Sequential(
     nn.Linear(512, 1),
 )
 
-model.load_state_dict(torch.load("/xception_deepfake_improved2.pth", map_location=device, weights_only=True))
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+model_path = os.path.join(base_dir, "xception_deepfake_improved2.pth")
+model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
 
 model.to(device)
 model.eval()

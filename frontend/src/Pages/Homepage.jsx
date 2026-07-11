@@ -32,7 +32,8 @@ const Homepage = () => {
     formData.append("image", file);
     setIsPredicting(true);
     try {
-      const res = await axios.post("http://127.0.0.1:5000/predict", formData);
+      const apiBaseUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
+      const res = await axios.post(`${apiBaseUrl}/predict`, formData);
       navigate("/result", {
         state: res.data,
       });
